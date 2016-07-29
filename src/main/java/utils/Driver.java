@@ -18,8 +18,7 @@ public class Driver {
         }
         if (browser.equals("firefox")) {
             return driver = new FirefoxDriver();
-        }
-        else
-        return null;
+        } else
+            return null;
     }
 }
