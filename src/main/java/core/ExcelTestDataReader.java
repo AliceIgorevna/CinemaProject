@@ -10,7 +10,7 @@ import java.io.FileInputStream;
 /**
  * Created by Алиса on 29.07.2016.
  */
-public class TestDataReader {
+public class ExcelTestDataReader {
 
     public static Object[][] getData(String excelFullName) {
         Object[][] testData = null;

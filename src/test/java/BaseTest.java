@@ -1,5 +1,6 @@
+import core.ExcelTestDataReader;
+import core.JsonTestDataReader;
 import core.PropertiesReader;
-import core.TestDataReader;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
@@ -30,18 +31,19 @@ public class BaseTest {
     }
 
     @DataProvider(name = "test")
-    public static Object[][] testData(){
-        return TestDataReader.getData("src//test//resources//test.xlsx");
+    public static Object[][] testData() {
+        return ExcelTestDataReader.getData("src//test//resources//test.xlsx");
     }
+
     @Test(dataProvider = "test")
-    public void test(String headerItemName, String listItemName,String expectedUrl, String city, String date) throws Exception {
-        homePage = BasePage.open("http://www.kinofilms.ua/", HomePage.class);
+    public void test(String headerItemName, String listItemName, String expectedUrl, String city, String date) throws Exception {
+        homePage = BasePage.open(JsonTestDataReader.readJson("data_set", "url"), HomePage.class); //"http://www.kinofilms.ua/"
         afishaPage = homePage.clickOnItemFromHeaderDropDownMenu(headerItemName, listItemName);
         Assert.assertEquals(afishaPage.getCurrentUrl(), expectedUrl, "Check url adress");
         afishaPage.setCityOptionFromToolbar(city);
         afishaPage.setDateOptionFromToolbar(date);
         Map<Integer, String> result = afishaPage.getAllAvailableFilmsTitle();
-        for (Map.Entry<Integer, String> entry: result.entrySet()) {
+        for (Map.Entry<Integer, String> entry : result.entrySet()) {
             System.out.println(entry.getKey() + " - " + entry.getValue());
         }
     }
