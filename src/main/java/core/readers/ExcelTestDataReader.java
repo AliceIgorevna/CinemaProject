@@ -1,4 +1,4 @@
-package core;
+package core.readers;
 
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;

@@ -4,7 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import utils.Waiter;
+import pages.base.BasePage;
+import utils.waiting.Waiter;
 
 import java.util.HashMap;
 import java.util.List;
@@ -39,6 +40,7 @@ public class AfishaPage extends BasePage {
     }
 
     public void setDateOptionFromToolbar(String date) {
+        Waiter.waitPageLoading(getDriver());
         click(By.xpath(DATE_BUTTON));
         Waiter.waitForElementPresent(By.xpath(DROP_DOWN_MENU), BasePage.driver);
         click(By.xpath(String.format(DATE_DROPDOWN_ITEM, date)));
@@ -48,7 +50,7 @@ public class AfishaPage extends BasePage {
         Map<Integer, String> films = new HashMap<>();
         List<WebElement> filmsTitleElements = findElements(By.xpath(FILMS_TITLE));
         for (int i = 0; i < filmsTitleElements.size(); i++) {
-            films.put(i, filmsTitleElements.get(i).getText());
+            films.put(i + 1, filmsTitleElements.get(i).getText());
         }
         return films;
     }

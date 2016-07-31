@@ -1,10 +1,10 @@
-package pages;
+package pages.base;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import utils.Waiter;
+import utils.waiting.Waiter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +21,10 @@ public abstract class BasePage {
         driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
         BasePage.driver = webDriver;
         actions = new Actions(driver);
+    }
+
+    public static WebDriver getDriver() {
+        return driver;
     }
 
     public static <T> T open(String URL, Class<T> classType) throws Exception {

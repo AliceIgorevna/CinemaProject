@@ -1,4 +1,4 @@
-package core;
+package core.readers;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -23,5 +23,4 @@ public class JsonTestDataReader {
         }
         return result;
     }
-
 }
