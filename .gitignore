@@ -1,0 +1,11 @@
+/target
+/test-output
+/report
+
+# ignore Intellij IDEA files
+*.iml
+/.idea/
+
+# ignore temp excel files (created when excel file is opened)
+**/~$*.xlsx
+
